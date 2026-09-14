@@ -21,9 +21,9 @@ using namespace std;
 
 
 //------------------------PROTOTYPE-------------------------------------------
-void promptFile(vector<string> &); 
+void promptFile(vector<string> & v); 
 void printVec(vector<string>);
-int ranGen();
+int ranGen(int size);
 void readFile(string filename, vector<string> & vec);
 void writeFile(string filename, vector<string> v0, vector<string> v1);
 
@@ -32,15 +32,15 @@ int main()
     srand(time(nullptr));
     vector<string> roster;
     vector<string> qBank;
-    readFile("2310_F26_Rosters.csv", roster);
-    readFile("Questions.csv", qBank);
+    readFile("Lab2/2310_F26_Rosters.csv", roster);
+    readFile("Lab2/Questions.csv", qBank);
     // printVec(roster);
     // printVec(qBank);
 
     // cout << "Size of roster: " << roster.size() << endl; 
     // cout << "Size of qBank: " << qBank.size() << endl;
 
-    writeFile("Student_question_bank.csv",roster, qBank);
+    writeFile("Lab2/Student_question_bank.csv",roster, qBank);
 
 }
 
@@ -81,8 +81,8 @@ void printVec(vector<string> v){
  * 
  * @return int: index of question
  */
-int ranGen(){
-    int randomNumber = rand() % 6;  // 0 through 5
+int ranGen(int size){
+    int randomNumber = rand() % size;  // 0 through size-1
     return randomNumber;
 }
 
@@ -145,7 +145,7 @@ void writeFile(string filename, vector<string> v0, vector<string> v1){
     // write under the structure:
     // Student_Name, Question_#
     for(int i = 0; i < v0.size(); i++){
-        outputFile << v0[i] << "," << v1[ranGen()] << endl;
+        outputFile << v0[i] << "," << v1[ranGen(v1.size())] << endl;
     }
     outputFile.close();
 
