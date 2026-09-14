@@ -25,8 +25,8 @@ using namespace std;
 void promptFile(vector<string> & v); 
 void printVec(vector<string>);
 int ranGen(int size);
-void readFile(string filename, vector<string> & vec);
-void writeFile(string filename, vector<string> v0, vector<string> v1);
+bool readFile(string filename, vector<string> & vec);
+bool writeFile(const string & filename, const vector<string> & v0, const vector<string> & v1);
 
 //------------------------RANDOMN SEED GENERATION-------------------------------------------
 std::random_device rd; //Obtain a random seed from the hardware
@@ -100,14 +100,14 @@ int ranGen(int size){
  * ​​​Return a bool instead in order to indicate whether the operation
  * succeeded or not
  */
-void readFile(string filename, vector<string> & vec) {
+bool readFile(string filename, vector<string> & vec) {
 
    ifstream inputFile(filename);
 
     //error handling
     if (!inputFile.is_open()) {
         cerr << "Error: Could not open file\n";
-        return;
+        return false;
     }
 
     string line;
@@ -117,7 +117,7 @@ void readFile(string filename, vector<string> & vec) {
     }
 
     inputFile.close();
-    return;
+    return true;
 }
 /**
  * @brief writes to filename with the first column from v0, second column from v1
@@ -138,12 +138,25 @@ void readFile(string filename, vector<string> & vec) {
  * -  pass by reference (e.g. vector<string> & v0),
  * -  pass by value (e.g. vector<string> v0),
  * -  pass by const reference (e.g. const vector<string> & v0),
+ * 
+ * Answer:
+ * - pass by reference: The function receives a reference to the original object,
+ * this allows the function to modify the orignal object. Since it does not make a complete
+ * new copy, it is much more efficient and takes less allocation.
+ * - pass by value: The function receives a copy of the original object, 
+ * so that means the function can't modify the original object, since the copy is local to the function.
+ * This can be less efficient for large objects since it involves copying the entire object.
+ * -  pass by const reference: he function receives a reference to the original object, however, 
+ * since the reference is const, the function cannot modify the original object. This is efficient
+ * while also safe if the function does not need to modify the object.
+ * 
  */
-void writeFile(string filename, vector<string> v0, vector<string> v1){
+bool writeFile(const string & filename, const vector<string> & v0, const vector<string> & v1){
 
     ofstream outputFile(filename);
      if (!outputFile) {
         cout << "Error: Could not create data.csv" << endl;
+        return false;
     }
 
     // write under the structure:
@@ -152,5 +165,5 @@ void writeFile(string filename, vector<string> v0, vector<string> v1){
         outputFile << v0[i] << "," << v1[ranGen(v1.size())] << endl;
     }
     outputFile.close();
-
+    return true;
 }
