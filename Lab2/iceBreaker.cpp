@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
 using namespace std;
 
@@ -27,9 +28,12 @@ int ranGen(int size);
 void readFile(string filename, vector<string> & vec);
 void writeFile(string filename, vector<string> v0, vector<string> v1);
 
+//------------------------RANDOMN SEED GENERATION-------------------------------------------
+std::random_device rd; //Obtain a random seed from the hardware
+std::mt19937 gen(rd()); //  Initialize the standard Mersenne Twister engine with the seed
+    
 int main()
-{
-    srand(time(nullptr));
+{    
     vector<string> roster;
     vector<string> qBank;
     readFile("Lab2/2310_F26_Rosters.csv", roster);
@@ -82,8 +86,8 @@ void printVec(vector<string> v){
  * @return int: index of question
  */
 int ranGen(int size){
-    int randomNumber = rand() % size;  // 0 through size-1
-    return randomNumber;
+    std::uniform_int_distribution<> dis(0, size - 1); // [0, size-1] inclusive range
+    return dis(gen); // Generate a random number in the specified range
 }
 
 /**
