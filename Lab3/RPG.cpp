@@ -1,5 +1,6 @@
 #include "RPG.h"
 
+// -- Class constructors --
 RPG :: RPG(){
     this->name = "NPC";
     this->hits_taken = 0;
@@ -14,4 +15,21 @@ RPG :: RPG(string name, int hits_taken, float luck, float exp, int level){
     this->luck = luck;
     this->exp = exp;
     this->level = level;
+}
+
+// -- Accessor Functions --
+string RPG :: getName() const{
+    return this->name;
+}
+int RPG :: getHitsTaken() const{
+    return this->hits_taken;
+}
+float RPG :: getLuck() const{
+    return this->luck;
+}
+float RPG :: getExp() const{
+    return this->exp;
+}
+int RPG :: getLevel() const{
+    return this->level;
 }
