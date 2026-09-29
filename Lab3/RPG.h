@@ -6,6 +6,10 @@
 
 using namespace std;
 
+const int INVENTORY_SIZE = 10;
+const float HIT_FACTOR = 0.5;
+const int MAX_HITS_TAKEN = 3;
+
 class RPG{
 
     public:

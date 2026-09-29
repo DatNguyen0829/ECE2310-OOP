@@ -33,3 +33,23 @@ float RPG :: getExp() const{
 int RPG :: getLevel() const{
     return this->level;
 }
+
+// -- Mutator Functions --
+
+/**
+ * @brief sets hits taken to new hits
+ * 
+ */
+ void RPG :: setHitsTaken(int new_hits){
+    this->hits_taken = new_hits;
+ }
+
+ /**
+  * @brief returns whether hits_taken is less than MAX_HITS_TAKEN
+  * In other words, a player is alive as long as they have not been hit MAX_HITS_TAKEN times
+  * @return true : player is alive
+  * @return false : player is unalive
+  */
+ bool RPG :: isAlive() const{
+    return this->hits_taken < MAX_HITS_TAKEN;
+ }
