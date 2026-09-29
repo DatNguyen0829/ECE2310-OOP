@@ -19,3 +19,6 @@
 build/
 bin/
 obj/
+
+# In class directory
+ClassLab/
