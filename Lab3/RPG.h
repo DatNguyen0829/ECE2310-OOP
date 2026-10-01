@@ -16,7 +16,7 @@ class RPG{
         // -- Class construction and destruction --
         RPG();
         RPG(string name, int hits_taken, float luck, float exp, int level);
-        ~RPG();
+        ~RPG() = default;
 
         // -- Mutators --
         bool isAlive() const;
