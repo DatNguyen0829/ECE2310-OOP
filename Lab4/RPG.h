@@ -28,6 +28,12 @@ class RPG{
         float getLuck() const;
         float getExp() const;
         int getLevel() const;
+
+        //==EXTENDED FUNCTION==
+        void setName(string Name);
+        void updateExpLevel();
+        void attack(RPG* opponent);
+        void printStats();
     
     private:
         // -- Class instance variables --
