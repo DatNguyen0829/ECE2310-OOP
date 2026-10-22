@@ -109,7 +109,10 @@ int RPG :: getLevel() const{
   * 
   */
  void RPG :: printStats(){
+
+    string aliveOrDead = (this->isAlive()) ? "Alive" : "Dead";
+
     cout << "Name: " << this->getName() <<  "\tHits Taken: " << this->getHitsTaken() <<
     "\tLuck: " << this->getLuck() << "\tExp: " << this->getExp() << "\tLevel: " << this->getLevel() <<
-    "\t Status: " << this->isAlive() << endl;
+    "\t Status: " << aliveOrDead << endl;
  }
