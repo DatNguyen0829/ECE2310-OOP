@@ -4,5 +4,16 @@
 
 #include "RPG.h"
 #include <set>
+#include <string>
+
+using namespace std;
+
+class Game{
+    
+    private:
+    
+    public:
+
+};
 
 #endif
