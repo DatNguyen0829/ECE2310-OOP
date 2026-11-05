@@ -1,6 +1,6 @@
 // Pokemon.h
-#ifndef CHARMANDER_H
-#define CHARMANDER_H
+#ifndef POKEMON_H
+#define POKEMON_H
 
 #include <string>
 #include <vector>
