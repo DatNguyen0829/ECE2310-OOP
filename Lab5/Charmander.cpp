@@ -37,7 +37,7 @@ Charmander :: Charmander(string name, int hp, int attack, int defense,
  * @brief says whatever this charmander says
  * 
  */
-void Pokemon :: speak(){
+void Charmander :: speak(){
     cout << "Charmander-char\n";
 }
 
